@@ -9,7 +9,7 @@ import { ClienteServicio } from '../interfaces/ClienteServicio';
 })
 export class ClientesService {
   //private apiUrl: string = 'https://localhost:7198/api';
-  private apiUrl: string = 'https://www.apiclienteservicio.somee.com/api/';
+  private apiUrl: string = 'https://www.apiclienteservicio.somee.com/api';
 
 
   constructor(private httpClient: HttpClient) {}

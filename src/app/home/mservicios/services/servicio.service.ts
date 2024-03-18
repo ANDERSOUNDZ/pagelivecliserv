@@ -8,7 +8,7 @@ import { Observable, catchError } from 'rxjs';
 })
 export class ServicioService {
   //private apiUrl: string = 'https://localhost:7198/api';
-  private apiUrl: string = 'https://www.apiclienteservicio.somee.com/api/';
+  private apiUrl: string = 'https://www.apiclienteservicio.somee.com/api';
 
   constructor(private httpClient: HttpClient) {}
 
