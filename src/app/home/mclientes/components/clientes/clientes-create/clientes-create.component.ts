@@ -30,8 +30,9 @@ formularioCliente: FormGroup = new FormGroup({
   ]),
   correo: new FormControl('', [
     Validators.required,
+    Validators.email,
     Validators.minLength(10),
-    Validators.maxLength(30),
+    Validators.maxLength(40),
   ]),
   estado: new FormControl('', [Validators.required]),
 });

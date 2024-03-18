@@ -17,23 +17,21 @@
           minlength="10"
           maxlength="30"
         />
-        <mat-hint align="start"><strong>Ingresa el nombre del cliente.</strong> </mat-hint>
+        <mat-hint align="start"
+          ><strong>Ingresa el nombre del cliente.</strong>
+        </mat-hint>
         <mat-error
           *ngIf="formularioCliente.get('nombreCliente')?.hasError('required')"
         >
           Nombre del Cliente es requerido.
         </mat-error>
         <mat-error
-          *ngIf="
-            formularioCliente.get('nombreCliente')?.hasError('minlength')
-          "
+          *ngIf="formularioCliente.get('nombreCliente')?.hasError('minlength')"
         >
           El nombre debe tener al menos 10 caracteres.
         </mat-error>
         <mat-error
-          *ngIf="
-            formularioCliente.get('nombreServicio')?.hasError('maxlength')
-          "
+          *ngIf="formularioCliente.get('nombreServicio')?.hasError('maxlength')"
         >
           El nombre debe tener maximo 30 caracteres.
         </mat-error>
@@ -45,17 +43,33 @@
         <input
           matInput
           formControlName="correo"
+          type="email"
           required
           minlength="10"
-          maxlength="30"
-        >
-        <mat-hint align="start"><strong>Ingresa correo electronico.</strong> </mat-hint>
+          maxlength="40"
+        />
+        <mat-hint align="start"
+          ><strong>Ingresa correo electronico.</strong>
+        </mat-hint>
         <mat-error
-          *ngIf="
-            formularioCliente.get('correo')?.hasError('required')
-          "
+          *ngIf="formularioCliente.get('correo')?.hasError('required')"
         >
           Correo es requerido.
+        </mat-error>
+        <mat-error
+          *ngIf="formularioCliente.get('correo')?.hasError('required')"
+        >
+          Ingrese un correo electrónico válido.
+        </mat-error>
+        <mat-error
+          *ngIf="formularioCliente.get('correo')?.hasError('minlength')"
+        >
+          El nombre debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="formularioCliente.get('correo')?.hasError('maxlength')"
+        >
+          El nombre debe tener maximo 40 caracteres.
         </mat-error>
       </mat-form-field>
     </div>
@@ -66,7 +80,9 @@
           <mat-option value="true">Activo</mat-option>
           <mat-option value="false">Inactivo</mat-option>
         </mat-select>
-        <mat-hint align="start"><strong>Elige el estado del cliente.</strong> </mat-hint>
+        <mat-hint align="start"
+          ><strong>Elige el estado del cliente.</strong>
+        </mat-hint>
         <mat-error
           *ngIf="formularioCliente.get('estado')?.hasError('required')"
         >
