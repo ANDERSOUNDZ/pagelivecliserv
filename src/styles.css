@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #f5f5f5;
+  background-image: url(https://img.freepik.com/free-photo/smiling-executive-using-headset_1098-527.jpg?t=st=1710758885~exp=1710762485~hmac=397682ad82a53323f2695304cbf537b318d93f78125b92cdb8c6289c22f3e6c2&w=826);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

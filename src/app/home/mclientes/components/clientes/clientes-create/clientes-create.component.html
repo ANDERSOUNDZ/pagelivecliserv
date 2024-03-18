@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col">
+    <h2>Crear Cliente</h2>
+  </div>
+</div>
+<hr />
+<form [formGroup]="formularioCliente">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Cliente</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="nombreCliente"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-hint align="start"><strong>Ingresa el nombre del cliente.</strong> </mat-hint>
+        <mat-error
+          *ngIf="formularioCliente.get('nombreCliente')?.hasError('required')"
+        >
+          Nombre del Cliente es requerido.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioCliente.get('nombreCliente')?.hasError('minlength')
+          "
+        >
+          El nombre debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioCliente.get('nombreServicio')?.hasError('maxlength')
+          "
+        >
+          El nombre debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Correo</mat-label>
+        <input
+          matInput
+          formControlName="correo"
+          required
+          minlength="10"
+          maxlength="30"
+        >
+        <mat-hint align="start"><strong>Ingresa correo electronico.</strong> </mat-hint>
+        <mat-error
+          *ngIf="
+            formularioCliente.get('correo')?.hasError('required')
+          "
+        >
+          Correo es requerido.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select name="estadoCliente" formControlName="estado">
+          <mat-option value="true">Activo</mat-option>
+          <mat-option value="false">Inactivo</mat-option>
+        </mat-select>
+        <mat-hint align="start"><strong>Elige el estado del cliente.</strong> </mat-hint>
+        <mat-error
+          *ngIf="formularioCliente.get('estado')?.hasError('required')"
+        >
+          Estado es requerido.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <section>
+        <div class="text-center mt-3">
+          <button
+            mat-flat-button
+            color="primary"
+            class="m-2"
+            routerLink="/cliente/listascliente"
+          >
+            Volver
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="m-2"
+            (click)="guardarCliente()"
+          >
+            Guardar
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</form>

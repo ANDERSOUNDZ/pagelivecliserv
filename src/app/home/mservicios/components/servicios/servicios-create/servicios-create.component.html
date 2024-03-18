@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col">
+    <h2>Crear Servicio</h2>
+  </div>
+</div>
+<hr />
+<form [formGroup]="formularioServicio">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Servicio</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="nombreServicio"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-hint align="start"><strong>Ingresa el nombre del servicio.</strong> </mat-hint>
+        <mat-error
+          *ngIf="formularioServicio.get('nombreServicio')?.hasError('required')"
+        >
+          Nombre del Servicio es requerido.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioServicio.get('nombreServicio')?.hasError('minlength')
+          "
+        >
+          El nombre debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioServicio.get('nombreServicio')?.hasError('maxlength')
+          "
+        >
+          El nombre debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Descripción</mat-label>
+        <input
+          matInput
+          formControlName="descripcionServicio"
+          required
+          minlength="10"
+          maxlength="30"
+        >
+        <mat-hint align="start"><strong>Ingresa la descripcion del servicio.</strong> </mat-hint>
+        <mat-error
+          *ngIf="
+            formularioServicio.get('descripcionServicio')?.hasError('required')
+          "
+        >
+          La descripción es requerida.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioServicio.get('descripcionServicio')?.hasError('minlength')
+          "
+        >
+          La descripción debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="
+            formularioServicio.get('descripcionServicio')?.hasError('maxlength')
+          "
+        >
+          La descripción debe tener menos de 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select name="estadoServicio" formControlName="estado">
+          <mat-option value="true">Activo</mat-option>
+          <mat-option value="false">Inactivo</mat-option>
+        </mat-select>
+        <mat-hint align="start"><strong>Elige el estado del servivio.</strong> </mat-hint>
+        <mat-error
+          *ngIf="formularioServicio.get('estado')?.hasError('required')"
+        >
+          Estado es requerido.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <section>
+        <div class="text-center mt-3">
+          <button
+            mat-flat-button
+            color="primary"
+            class="m-2"
+            routerLink="/listaservicio"
+          >
+            Volver
+          </button>
+          <button
+            mat-flat-button
+            color="primary"
+            class="m-2"
+            (click)="guardarServicio()"
+          >
+            Guardar
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</form>

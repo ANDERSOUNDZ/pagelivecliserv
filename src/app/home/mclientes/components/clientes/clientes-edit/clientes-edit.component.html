@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col">
+    <h2>Editar Cliente</h2>
+  </div>
+</div>
+<hr />
+<form [formGroup]="editForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Cliente</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="nombreCliente"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-error *ngIf="editForm.get('nombreCliente')?.hasError('required')">
+          Nombre del Servicio es requerido.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('nombreCliente')?.hasError('minlength')"
+        >
+          El nombre debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('nombreCliente')?.hasError('maxlength')"
+        >
+          El nombre debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="correo"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-error *ngIf="editForm.get('correo')?.hasError('required')">
+          La descripción del servicio es requerido.
+        </mat-error>
+        <mat-error *ngIf="editForm.get('correo')?.hasError('minlength')">
+          La descripción debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('correo')?.hasError('maxlength')"
+        >
+          La descripción debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <section class="example-section">
+        <mat-checkbox class="example-margin" formControlName="estado">
+          Activo
+        </mat-checkbox>
+      </section>
+    </div>
+    <hr/>
+    <div class="row">
+      <h4>Servicios del Cliente</h4>
+      <hr>
+      <div *ngFor="let item of servicioCliente">
+        <div class="col">
+          {{ item.nombreServicio }} - Estado: {{item.estado ? "Activo" : "Inactivo"}}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="col">
+      <button
+        mat-flat-button
+        color="primary"
+        class="m-2"
+        routerLink="/cliente/listascliente"
+      >
+        Volver
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="m-2"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>

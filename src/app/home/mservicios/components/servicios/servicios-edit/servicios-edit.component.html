@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col">
+    <h2>Editar Servicio</h2>
+  </div>
+</div>
+<hr />
+<form [formGroup]="editForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del Servicio</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="nombreServicio"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-error *ngIf="editForm.get('nombreServicio')?.hasError('required')">
+          Nombre del Servicio es requerido.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('nombreServicio')?.hasError('minlength')"
+        >
+          El nombre debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('nombreServicio')?.hasError('maxlength')"
+        >
+          El nombre debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <input
+          matInput
+          type="text"
+          type="text"
+          formControlName="descripcion"
+          required
+          minlength="10"
+          maxlength="30"
+        />
+        <mat-error *ngIf="editForm.get('descripcion')?.hasError('required')">
+          La descripción del servicio es requerido.
+        </mat-error>
+        <mat-error *ngIf="editForm.get('descripcion')?.hasError('minlength')">
+          La descripción debe tener al menos 10 caracteres.
+        </mat-error>
+        <mat-error
+          *ngIf="editForm.get('nombreServicio')?.hasError('maxlength')"
+        >
+          La descripción debe tener maximo 30 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <section class="example-section">
+        <mat-checkbox class="example-margin" formControlName="estado">
+          Activo
+        </mat-checkbox>
+      </section>
+    </div>
+    <hr />
+    <div class="col">
+      <button
+        mat-flat-button
+        color="primary"
+        class="m-2"
+        routerLink="/listaservicio"
+      >
+        Volver
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="m-2"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
