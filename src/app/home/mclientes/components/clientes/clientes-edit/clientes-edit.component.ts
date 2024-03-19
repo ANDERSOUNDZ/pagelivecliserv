@@ -58,7 +58,7 @@ export class ClientesEditComponent implements OnInit {
 
       this.clienteService.editarCliente(this.id, cliente).subscribe(() => {
         this.alertaMensaje('Cliente actualizado.', 'OK');
-        this.router.navigate(['/listascliente']);
+        this.router.navigate(['/cliente/listascliente']);
       });
     }
   }

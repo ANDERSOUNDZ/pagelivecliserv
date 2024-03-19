@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/mclientes/clientes.module').then(module => module.ClientesModule)
   },
   {
+    path: 'serviciosclientes',
+    loadChildren: () => import('./home/mcliserv/clientesservicio.module').then(module => module.ClientesservicioModule)
+  },
+  {
     path: '**',
     redirectTo: 'servicio'
   }

@@ -4,12 +4,14 @@ import { ServicioPageComponent } from './pages/servicio-page/servicio-page.compo
 import { ClientePageComponent } from './pages/cliente-page/cliente-page.component';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ClienteServicioPageComponent } from './pages/cliente-servicio-page/cliente-servicio-page.component';
 
 @NgModule({
   declarations: [
     ServicioPageComponent,
     ClientePageComponent,
-    SidebarComponent
+    SidebarComponent,
+    ClienteServicioPageComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   exports:[
     ServicioPageComponent,
     ClientePageComponent,
+    ClienteServicioPageComponent,
     SidebarComponent
   ]
 })
