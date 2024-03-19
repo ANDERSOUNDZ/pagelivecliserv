@@ -5,13 +5,13 @@
         <h3>Menu Administración:</h3>
         <hr />
         <ul class="list-group">
+
           <li
             class="list-group-item"
             routerLinkActive="active"
-            routerLink="servicio/listaservicio"
-            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="serviciosclientes"
           >
-            Servicios
+            Lista Servicios Clientes
           </li>
           <li
             class="list-group-item"
@@ -23,9 +23,10 @@
           <li
             class="list-group-item"
             routerLinkActive="active"
-            routerLink="serviciosclientes"
+            routerLink="servicio/listaservicio"
+            [routerLinkActiveOptions]="{ exact: true }"
           >
-            Lista Servicios Clientes
+            Servicios
           </li>
         </ul>
       </div>
