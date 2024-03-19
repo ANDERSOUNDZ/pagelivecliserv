@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioService } from '../../../../mservicios/services/servicio.service';
 import { Servicio } from '../../../../mservicios/interfaces/Servicio';
 import { ClientesservicioService } from '../../../../mcliserv/services/clientesservicio.service';
 import { ClienteServicioLista } from '../../../../mcliserv/interfaces/ClienteServicioLista';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-clientes-asignarservicio',
@@ -15,7 +17,7 @@ export class ClientesAsignarservicioComponent implements OnInit {
   public servicios: Servicio[] = [];
   public serviciosCliente!: ClienteServicioLista;
   asignarForm: FormGroup = this.fb.group({
-    servicioId: [''],
+    servicioId: ['', [Validators.required] ],
   });
 
   public idCliente!: number;
@@ -25,7 +27,8 @@ export class ClientesAsignarservicioComponent implements OnInit {
     private fb: FormBuilder,
     private servicioService: ServicioService,
     private servicioClienteServicio: ClientesservicioService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
   ) {
     this.cargarlistaServicios();
   }
@@ -56,7 +59,39 @@ export class ClientesAsignarservicioComponent implements OnInit {
       idServicio: this.asignarForm.get('servicioId')!.value,
     };
     console.log(cliente);
-    this.servicioClienteServicio.agregarServicioCliente(cliente).subscribe();
-    this.router.navigate(['/cliente/listascliente']);
+    this.servicioClienteServicio.agregarServicioCliente(cliente).subscribe({
+      next: () => {
+        this.alertaMensaje('Servicio asignado exitosamente!', 'OK');
+        this.router.navigate(['/cliente/listascliente']);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 400) {
+          this.alertaMensaje(
+            'SERVICIO YA ASIGNADO EN ESTE CLIENTE!',
+            'OK'
+          );
+        } else {
+          this.snackBar.open(
+            'MENSAJE: ' +
+              'EL SERVICIO YA SE ENCUENTRA ASIGNADO EN ESTE CLIENTE!',
+            'CERRAR',
+            {
+              duration: 10000,
+            }
+          );
+        }
+      },
+    });
+
   }
+
+  alertaMensaje(mensaje: string, accion: string) {
+    this.snackBar.open(mensaje, accion),
+      this.snackBar.open(mensaje, accion, {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
+  }
+
 }
