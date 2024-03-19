@@ -41,11 +41,7 @@ export class ClientesEditComponent implements OnInit {
         estado: [cliente.estado],
       });
     });
-    this.clienteService.obtenerServicioCliente(this.id).subscribe((serviciosCliente) =>{
-      console.log(serviciosCliente.servicios);
-      this.servicioCliente = serviciosCliente.servicios;
-    }
-    );
+
   }
 
   onSubmit() {

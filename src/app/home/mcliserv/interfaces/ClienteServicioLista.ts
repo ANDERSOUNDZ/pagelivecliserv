@@ -1,8 +1,8 @@
 export interface ClienteServicioLista {
 id?: number,
 idCliente: number,
-nombreCliente: string,
+nombreCliente?: string,
 idServicio: number,
-nombreServicio: string,
+nombreServicio?: string,
 estado?: boolean
 }

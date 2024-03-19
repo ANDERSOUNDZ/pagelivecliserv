@@ -4,6 +4,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { ClientesListComponent } from './components/clientes/clientes-list/clientes-list.component';
 import { ClientesCreateComponent } from './components/clientes/clientes-create/clientes-create.component';
 import { ClientesEditComponent } from './components/clientes/clientes-edit/clientes-edit.component';
+import { ClientesAsignarservicioComponent } from './components/clientes/clientes-asignarservicio/clientes-asignarservicio.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path:'editarcliente/:id',
         component: ClientesEditComponent
+      },
+      {
+        path:'asignarserviciocliente/:id',
+        component: ClientesAsignarservicioComponent
       },
     ],
   },

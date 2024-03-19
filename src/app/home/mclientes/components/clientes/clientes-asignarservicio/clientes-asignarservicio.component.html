@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col">
+    <h2>Asignar servicio</h2>
+  </div>
+</div>
+<hr />
+<form [formGroup]="asignarForm">
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-select name="servicioId" formControlName="servicioId">
+          <mat-option>-- Elige el servicio que deseas: --</mat-option>
+          <mat-option
+            *ngFor="let competence of servicios"
+            [value]="competence.id"
+            >{{ competence.nombreServicio }}</mat-option
+          >
+        </mat-select>
+        <mat-label>Servicios</mat-label>
+        <mat-hint align="start"
+          ><strong>Elige el servicio que mas te guste.</strong>
+        </mat-hint>
+      </mat-form-field>
+
+    </div>
+    <div class="col"></div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <button
+      mat-fab
+      extended
+        color="primary"
+        class="m-2"
+        routerLink="cliente/listascliente"
+      >
+        Volver
+      </button>
+      <button mat-fab
+      extended color="warn" class="m-2" (click)="onSubmit()">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>

@@ -17,10 +17,23 @@ export class ClientesservicioService {
     return this.httpClient.get<ClienteServicioLista[]>(url).pipe(catchError((error) => []));
   }
 
+  obtenerServiciosCliente(id: number): Observable<ClienteServicioLista> {
+    const url = `${this.apiUrl}/ClienteServicio/obtenerservicioscliente/${id}`;
+    return this.httpClient.get<ClienteServicioLista>(url).pipe(catchError((error) => []));
+  }
+
   cambiarEstadoServicio(idCliente: number, idServicio: number, estado: boolean){
     const url = `${this.apiUrl}/ClienteServicio/actualizarestadoservicio/${idCliente}/${idServicio}?estado=${estado}`;
     return this.httpClient
       .put(url,estado)
+      .pipe(catchError((error) => []));
+  }
+
+  agregarServicioCliente(servicio: ClienteServicioLista): Observable<ClienteServicioLista> {
+    console.log(servicio, 'desdeElServicio');
+    const url = `${this.apiUrl}/ClienteServicio/agregarserviciocliente`;
+    return this.httpClient
+      .post<ClienteServicioLista>(url, servicio)
       .pipe(catchError((error) => []));
   }
 

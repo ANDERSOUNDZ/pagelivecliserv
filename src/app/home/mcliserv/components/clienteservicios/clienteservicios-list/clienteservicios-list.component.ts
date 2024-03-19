@@ -23,7 +23,6 @@ export class ClienteserviciosListComponent implements OnInit{
     'nombreCliente',
     'nombreServicio',
     'estado',
-    //'accion',
     'delete'
   ];
 

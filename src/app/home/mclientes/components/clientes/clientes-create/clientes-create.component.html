@@ -91,13 +91,15 @@
       </mat-form-field>
     </div>
   </div>
+  <br>
   <hr />
   <div class="row">
     <div class="col">
       <section>
-        <div class="text-center mt-3">
+        <div class=" mt-3">
           <button
-            mat-flat-button
+          mat-fab
+          extended
             color="primary"
             class="m-2"
             routerLink="/cliente/listascliente"
@@ -105,8 +107,9 @@
             Volver
           </button>
           <button
-            mat-flat-button
-            color="primary"
+          mat-fab
+          extended
+            color="warn"
             class="m-2"
             (click)="guardarCliente()"
           >

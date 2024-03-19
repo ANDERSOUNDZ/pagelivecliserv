@@ -17,13 +17,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ClienteserviciosListComponent } from './components/clienteservicios/clienteservicios-list/clienteservicios-list.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { ClienteserviciosAsignarComponent } from './components/clienteservicios/clienteservicios-asignar/clienteservicios-asignar.component';
 
 @NgModule({
   declarations: [
     ClienteserviciosComponent,
     ClienteserviciosListComponent,
-    ClienteserviciosAsignarComponent
   ],
   imports: [
     CommonModule,

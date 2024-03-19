@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteserviciosComponent } from './components/clienteservicios/clienteservicios.component';
 import { ClienteserviciosListComponent } from './components/clienteservicios/clienteservicios-list/clienteservicios-list.component';
-import { ClienteserviciosAsignarComponent } from './components/clienteservicios/clienteservicios-asignar/clienteservicios-asignar.component';
 
 const routes: Routes = [
   {
@@ -12,11 +11,7 @@ const routes: Routes = [
       {
         path: '',
         component: ClienteserviciosListComponent,
-      },
-      {
-        path: 'asignarservicio',
-        component: ClienteserviciosAsignarComponent,
-      },
+      }
       // {
       //   path:'editarcliente/:id',
       //   component: ClientesEditComponent

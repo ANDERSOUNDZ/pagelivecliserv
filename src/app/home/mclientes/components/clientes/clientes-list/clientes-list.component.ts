@@ -24,6 +24,7 @@ export class ClientesListComponent implements OnInit {
     'nombreCliente',
     'correo',
     'estado',
+    'asignar',
     'edit',
     'delete',
   ];
@@ -76,6 +77,11 @@ this.listaCliente();
         }
       },
     });
+  }
+
+  asignarServicioCliente(clienteId: number): void{
+    console.log(clienteId);
+    this.route.navigate(['/cliente/listascliente/asignarserviciocliente', clienteId]);
   }
 
   alertaMensaje(mensaje: string, accion: string) {

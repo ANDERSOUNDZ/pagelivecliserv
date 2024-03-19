@@ -18,13 +18,15 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { ClientesListComponent } from './components/clientes/clientes-list/clientes-list.component';
 import { ClientesCreateComponent } from './components/clientes/clientes-create/clientes-create.component';
 import { ClientesEditComponent } from './components/clientes/clientes-edit/clientes-edit.component';
+import { ClientesAsignarservicioComponent } from './components/clientes/clientes-asignarservicio/clientes-asignarservicio.component';
 
 @NgModule({
   declarations: [
     ClientesComponent,
     ClientesListComponent,
     ClientesCreateComponent,
-    ClientesEditComponent
+    ClientesEditComponent,
+    ClientesAsignarservicioComponent
   ],
   imports: [
     CommonModule,

@@ -24,11 +24,6 @@ export class ClientesService {
     return this.httpClient.get<Cliente>(url).pipe(catchError((error) => []));
   }
 
-  obtenerServicioCliente(id: number): Observable<ClienteServicio> {
-    const url = `${this.apiUrl}/ClienteServicio/ListaClienteServicios/${id}`;
-    return this.httpClient.get<ClienteServicio>(url).pipe(catchError((error) => []));
-  }
-
   crearCliente(servicio: Cliente): Observable<Cliente> {
     console.log(servicio, 'desdeElServicio');
     const url = `${this.apiUrl}/Cliente/agregarCliente`;

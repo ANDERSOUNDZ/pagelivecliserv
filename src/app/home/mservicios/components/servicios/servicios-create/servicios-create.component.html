@@ -17,7 +17,9 @@
           minlength="10"
           maxlength="30"
         />
-        <mat-hint align="start"><strong>Ingresa el nombre del servicio.</strong> </mat-hint>
+        <mat-hint align="start"
+          ><strong>Ingresa el nombre del servicio.</strong>
+        </mat-hint>
         <mat-error
           *ngIf="formularioServicio.get('nombreServicio')?.hasError('required')"
         >
@@ -48,8 +50,10 @@
           required
           minlength="10"
           maxlength="30"
-        >
-        <mat-hint align="start"><strong>Ingresa la descripcion del servicio.</strong> </mat-hint>
+        />
+        <mat-hint align="start"
+          ><strong>Ingresa la descripcion del servicio.</strong>
+        </mat-hint>
         <mat-error
           *ngIf="
             formularioServicio.get('descripcionServicio')?.hasError('required')
@@ -80,7 +84,9 @@
           <mat-option value="true">Activo</mat-option>
           <mat-option value="false">Inactivo</mat-option>
         </mat-select>
-        <mat-hint align="start"><strong>Elige el estado del servivio.</strong> </mat-hint>
+        <mat-hint align="start"
+          ><strong>Elige el estado del servivio.</strong>
+        </mat-hint>
         <mat-error
           *ngIf="formularioServicio.get('estado')?.hasError('required')"
         >
@@ -89,13 +95,15 @@
       </mat-form-field>
     </div>
   </div>
+  <br />
   <hr />
   <div class="row">
     <div class="col">
       <section>
-        <div class="text-center mt-3">
+        <div class="mt-3">
           <button
-            mat-flat-button
+            mat-fab
+            extended
             color="primary"
             class="m-2"
             routerLink="/listaservicio"
@@ -103,8 +111,9 @@
             Volver
           </button>
           <button
-            mat-flat-button
-            color="primary"
+            mat-fab
+            extended
+            color="warn"
             class="m-2"
             (click)="guardarServicio()"
           >
