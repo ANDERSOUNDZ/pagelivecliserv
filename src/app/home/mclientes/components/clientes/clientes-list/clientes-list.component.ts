@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
 import { ClientesService } from '../../../services/clientes.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-clientes-list',
   templateUrl: './clientes-list.component.html',
-  styleUrl: './clientes-list.component.css'
+  styleUrl: './clientes-list.component.css',
 })
 export class ClientesListComponent implements OnInit {
-
   dataSource!: MatTableDataSource<Cliente>;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,12 +31,10 @@ export class ClientesListComponent implements OnInit {
     private clienteService: ClientesService,
     private snackBar: MatSnackBar,
     private route: Router
-  ){
-this.listaCliente();
+  ) {
+    this.listaCliente();
   }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   listaCliente(): void {
     this.clienteService.listaCliente().subscribe({
@@ -69,19 +65,33 @@ this.listaCliente();
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 500) {
-          this.alertaMensaje('No se puede eliminar un cliente pues mantiene servicios adjuntos', 'ok');
+          this.alertaMensaje(
+            'No se puede eliminar un cliente pues mantiene servicios adjuntos',
+            'ok'
+          );
         } else {
-          this.snackBar.open('Error al eliminar cliente: ' + err.message, 'Cerrar', {
-            duration: 3000,
-          });
+          this.snackBar.open(
+            'MENSAJE: ' +
+              'No se puede eliminar un cliente, pues se encuentra ligado a un servicio.',
+            'Cerrar',
+            {
+              duration: 10000,
+              panelClass: ['custom-snack-bar'],
+            
+            }
+
+          );
         }
       },
     });
   }
 
-  asignarServicioCliente(clienteId: number): void{
+  asignarServicioCliente(clienteId: number): void {
     console.log(clienteId);
-    this.route.navigate(['/cliente/listascliente/asignarserviciocliente', clienteId]);
+    this.route.navigate([
+      '/cliente/listascliente/asignarserviciocliente',
+      clienteId,
+    ]);
   }
 
   alertaMensaje(mensaje: string, accion: string) {
@@ -100,5 +110,4 @@ this.listaCliente();
       this.dataSource.paginator.firstPage();
     }
   }
-
 }

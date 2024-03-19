@@ -20,14 +20,10 @@
         <mat-error *ngIf="editForm.get('nombreCliente')?.hasError('required')">
           Nombre del Servicio es requerido.
         </mat-error>
-        <mat-error
-          *ngIf="editForm.get('nombreCliente')?.hasError('minlength')"
-        >
+        <mat-error *ngIf="editForm.get('nombreCliente')?.hasError('minlength')">
           El nombre debe tener al menos 10 caracteres.
         </mat-error>
-        <mat-error
-          *ngIf="editForm.get('nombreCliente')?.hasError('maxlength')"
-        >
+        <mat-error *ngIf="editForm.get('nombreCliente')?.hasError('maxlength')">
           El nombre debe tener maximo 30 caracteres.
         </mat-error>
       </mat-form-field>
@@ -49,9 +45,7 @@
         <mat-error *ngIf="editForm.get('correo')?.hasError('minlength')">
           La descripción debe tener al menos 10 caracteres.
         </mat-error>
-        <mat-error
-          *ngIf="editForm.get('correo')?.hasError('maxlength')"
-        >
+        <mat-error *ngIf="editForm.get('correo')?.hasError('maxlength')">
           La descripción debe tener maximo 30 caracteres.
         </mat-error>
       </mat-form-field>
@@ -63,15 +57,16 @@
         </mat-checkbox>
       </section>
     </div>
-    <hr/>
-    <div class="row">
+    <hr />
+    <!-- <div class="row">
       <h4>Servicios Asignados del Cliente</h4>
       <hr>
     </div>
-    <hr>
+    <hr> -->
     <div class="col">
       <button
-        mat-flat-button
+        mat-fab
+        extended
         color="primary"
         class="m-2"
         routerLink="/cliente/listascliente"
@@ -79,8 +74,9 @@
         Volver
       </button>
       <button
-        mat-flat-button
-        color="primary"
+        mat-fab
+        extended
+        color="warn"
         class="m-2"
         type="submit"
         (click)="onSubmit()"

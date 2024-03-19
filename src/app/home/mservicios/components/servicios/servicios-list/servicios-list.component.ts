@@ -65,11 +65,20 @@ export class ServiciosListComponent implements OnInit {
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 500) {
-          this.alertaMensaje('No se puede eliminar este servicio pues mantiene servicios adjuntos', 'Error');
+          this.alertaMensaje(
+            'MENSAJE: ' +
+              'No se puede eliminar un servicio, pues se encuentra ligado a un cliente.',
+            'Cerrar',
+          );
         } else {
-          this.snackBar.open('Error al eliminar el servicio: ' + err.message, 'Cerrar', {
-            duration: 3000,
-          });
+          this.snackBar.open(
+            'MENSAJE: ' +
+              'No se puede eliminar un servicio, pues se encuentra ligado a un cliente.',
+            'Cerrar',
+            {
+              duration: 10000,
+            }
+          );
         }
       },
     });
