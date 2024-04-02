@@ -1,5 +1,4 @@
 export interface ClienteServicio {
-  nombreCliente: string;
   servicios: Servicio[];
 }
 

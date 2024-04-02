@@ -14,7 +14,7 @@ import { ClienteServicio } from '../../../interfaces/ClienteServicio';
 export class ClientesEditComponent implements OnInit {
   public id!: number;
   public cliente!: Cliente;
-  public servicioCliente: any;
+  //public servicioCliente: ServicioCliente;
 
   editForm: FormGroup = this.fb.group({
     nombreCliente: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(30)]],

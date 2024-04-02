@@ -6,3 +6,5 @@ idServicio: number,
 nombreServicio?: string,
 estado?: boolean
 }
+
+

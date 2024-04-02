@@ -21,11 +21,22 @@
           ><strong>Elige el servicio que mas te guste.</strong>
         </mat-hint>
       </mat-form-field>
-
     </div>
-    <div class="col"></div>
+    <div class="col">
+      <button mat-fab
+      extended color="warn" class="m-2" (click)="onSubmit()">
+        Guardar
+      </button>
+    </div>
   </div>
   <hr />
+  <div class="row">
+    <h2>Lista de servicios asignados</h2>
+    <div *ngFor="let ser of cliServ">
+      {{ser.servicios}}
+    </div>
+  </div>
+  <hr>
   <div class="row">
     <div class="col">
       <button
@@ -36,10 +47,6 @@
         routerLink="cliente/listascliente"
       >
         Volver
-      </button>
-      <button mat-fab
-      extended color="warn" class="m-2" (click)="onSubmit()">
-        Guardar
       </button>
     </div>
   </div>

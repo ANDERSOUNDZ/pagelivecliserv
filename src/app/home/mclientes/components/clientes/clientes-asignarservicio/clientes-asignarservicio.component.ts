@@ -7,6 +7,7 @@ import { ClientesservicioService } from '../../../../mcliserv/services/clientess
 import { ClienteServicioLista } from '../../../../mcliserv/interfaces/ClienteServicioLista';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ClienteServicio } from '../../../interfaces/ClienteServicio';
 
 @Component({
   selector: 'app-clientes-asignarservicio',
@@ -14,13 +15,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './clientes-asignarservicio.component.css',
 })
 export class ClientesAsignarservicioComponent implements OnInit {
-  public servicios: Servicio[] = [];
-  public serviciosCliente!: ClienteServicioLista;
+
+  public servicios!: Servicio[];
+  public cliServ: ClienteServicio [] = [];
+
   asignarForm: FormGroup = this.fb.group({
     servicioId: ['', [Validators.required] ],
   });
-
-  public idCliente!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,18 +40,17 @@ export class ClientesAsignarservicioComponent implements OnInit {
   cargarlistaServicios() {
     this.servicioService.listaServicios().subscribe((servicios) => {
       this.servicios = servicios;
-      console.log(servicios);
     });
   }
 
   cargarListaServiciosCliente() {
     let id = this.route.snapshot.params['id'];
-    this.servicioClienteServicio
-      .obtenerServiciosCliente(id)
-      .subscribe((serviciosCliente) => {
-        this.serviciosCliente =  serviciosCliente;
-        console.log(serviciosCliente);
-      });
+    this.servicioClienteServicio.obtenerServiciosClientes(id).subscribe(
+      (data) => {
+        console.log(data)
+        
+      }
+    );
   }
 
   onSubmit(): void {
@@ -58,7 +58,6 @@ export class ClientesAsignarservicioComponent implements OnInit {
       idCliente: this.route.snapshot.params['id'],
       idServicio: this.asignarForm.get('servicioId')!.value,
     };
-    console.log(cliente);
     this.servicioClienteServicio.agregarServicioCliente(cliente).subscribe({
       next: () => {
         this.alertaMensaje('Servicio asignado exitosamente!', 'OK');

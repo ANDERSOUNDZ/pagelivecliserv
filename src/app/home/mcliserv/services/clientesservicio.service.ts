@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ClienteServicioLista } from '../interfaces/ClienteServicioLista';
 import { Observable, catchError } from 'rxjs';
+import { ClienteServicio } from '../../mclientes/interfaces/ClienteServicio';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class ClientesservicioService {
   obtenerServiciosCliente(id: number): Observable<ClienteServicioLista> {
     const url = `${this.apiUrl}/ClienteServicio/obtenerservicioscliente/${id}`;
     return this.httpClient.get<ClienteServicioLista>(url).pipe(catchError((error) => []));
+  }
+
+  obtenerServiciosClientes(id: number): Observable<ClienteServicio[]> {
+    const url = `${this.apiUrl}/ClienteServicio/obtenerservicioscliente/${id}`;
+    return this.httpClient.get<ClienteServicio[]>(url).pipe(catchError((error) => []));
   }
 
   cambiarEstadoServicio(idCliente: number, idServicio: number, estado: boolean){
