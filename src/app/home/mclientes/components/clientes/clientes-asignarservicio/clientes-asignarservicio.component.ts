@@ -15,12 +15,11 @@ import { ClienteServicio } from '../../../interfaces/ClienteServicio';
   styleUrl: './clientes-asignarservicio.component.css',
 })
 export class ClientesAsignarservicioComponent implements OnInit {
-
   public servicios!: Servicio[];
-  public cliServ: ClienteServicio [] = [];
+  public cliServ!: Servicio[];
 
   asignarForm: FormGroup = this.fb.group({
-    servicioId: ['', [Validators.required] ],
+    servicioId: ['', [Validators.required]],
   });
 
   constructor(
@@ -29,7 +28,7 @@ export class ClientesAsignarservicioComponent implements OnInit {
     private servicioService: ServicioService,
     private servicioClienteServicio: ClientesservicioService,
     private router: Router,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar
   ) {
     this.cargarlistaServicios();
   }
@@ -45,12 +44,11 @@ export class ClientesAsignarservicioComponent implements OnInit {
 
   cargarListaServiciosCliente() {
     let id = this.route.snapshot.params['id'];
-    this.servicioClienteServicio.obtenerServiciosClientes(id).subscribe(
-      (data) => {
-        console.log(data)
-        
-      }
-    );
+    this.servicioClienteServicio
+      .obtenerServiciosClientes(id)
+      .subscribe((data) => {
+        this.cliServ = data.servicios
+      });
   }
 
   onSubmit(): void {
@@ -65,10 +63,7 @@ export class ClientesAsignarservicioComponent implements OnInit {
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 400) {
-          this.alertaMensaje(
-            'SERVICIO YA ASIGNADO EN ESTE CLIENTE!',
-            'OK'
-          );
+          this.alertaMensaje('SERVICIO YA ASIGNADO EN ESTE CLIENTE!', 'OK');
         } else {
           this.snackBar.open(
             'MENSAJE: ' +
@@ -81,7 +76,6 @@ export class ClientesAsignarservicioComponent implements OnInit {
         }
       },
     });
-
   }
 
   alertaMensaje(mensaje: string, accion: string) {
@@ -92,5 +86,4 @@ export class ClientesAsignarservicioComponent implements OnInit {
         verticalPosition: 'top',
       });
   }
-
 }

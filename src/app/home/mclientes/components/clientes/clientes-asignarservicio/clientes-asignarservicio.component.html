@@ -23,8 +23,7 @@
       </mat-form-field>
     </div>
     <div class="col">
-      <button mat-fab
-      extended color="warn" class="m-2" (click)="onSubmit()">
+      <button mat-fab extended color="warn" class="m-2" (click)="onSubmit()">
         Guardar
       </button>
     </div>
@@ -32,16 +31,24 @@
   <hr />
   <div class="row">
     <h2>Lista de servicios asignados</h2>
-    <div *ngFor="let ser of cliServ">
-      {{ser.servicios}}
+    <hr />
+    <div *ngFor="let item of cliServ">
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body" >
+            <h5 class="card-title">{{item.nombreServicio}}</h5>
+            <p class="card-text">{{item.descripcion}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <hr>
+  <hr />
   <div class="row">
     <div class="col">
       <button
-      mat-fab
-      extended
+        mat-fab
+        extended
         color="primary"
         class="m-2"
         routerLink="cliente/listascliente"

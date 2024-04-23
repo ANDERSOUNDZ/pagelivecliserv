@@ -9,6 +9,7 @@ import { ClienteServicio } from '../../mclientes/interfaces/ClienteServicio';
 })
 export class ClientesservicioService {
 
+  //private apiUrl: string = 'https://localhost:7198/api';
   private apiUrl: string = 'https://www.apiclienteservicio.somee.com/api';
 
   constructor(private httpClient: HttpClient) { }
@@ -18,14 +19,9 @@ export class ClientesservicioService {
     return this.httpClient.get<ClienteServicioLista[]>(url).pipe(catchError((error) => []));
   }
 
-  obtenerServiciosCliente(id: number): Observable<ClienteServicioLista> {
+  obtenerServiciosClientes(id: number): Observable<ClienteServicio> {
     const url = `${this.apiUrl}/ClienteServicio/obtenerservicioscliente/${id}`;
-    return this.httpClient.get<ClienteServicioLista>(url).pipe(catchError((error) => []));
-  }
-
-  obtenerServiciosClientes(id: number): Observable<ClienteServicio[]> {
-    const url = `${this.apiUrl}/ClienteServicio/obtenerservicioscliente/${id}`;
-    return this.httpClient.get<ClienteServicio[]>(url).pipe(catchError((error) => []));
+    return this.httpClient.get<ClienteServicio>(url).pipe(catchError((error) => []));
   }
 
   cambiarEstadoServicio(idCliente: number, idServicio: number, estado: boolean){

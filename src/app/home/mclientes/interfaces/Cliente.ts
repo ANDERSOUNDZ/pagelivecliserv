@@ -4,3 +4,4 @@ export interface Cliente {
   correo: string;
   estado?: boolean;
 }
+  
